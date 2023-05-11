@@ -17,7 +17,7 @@ function App() {
     .then(petArray => setPets(petArray))
   }, [])
 
-console.log(trainers)
+console.log(trainers) //Delete later as well as the next line
 console.log(pets)
 
   return (
@@ -25,6 +25,7 @@ console.log(pets)
       {/*NavBar*/}
       <Switch>
         <Route exact path="/">
+          <h2 className="header">Homepage</h2>
           <p>Placeholder text for nyaow.</p>
         </Route>
       </Switch>

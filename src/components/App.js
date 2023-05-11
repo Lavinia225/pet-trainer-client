@@ -1,5 +1,6 @@
 import {Route, Switch} from "react-router-dom"
 import {useState, useEffect} from 'react'
+import NavBar from "./NavBar"
 
 function App() {
   const [trainers, setTrainers] = useState([])
@@ -22,7 +23,7 @@ console.log(pets)
 
   return (
     <div className="App">
-      {/*NavBar*/}
+      <NavBar />
       <Switch>
         <Route exact path="/">
           <h2 className="header">Homepage</h2>

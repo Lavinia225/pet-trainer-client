@@ -29,6 +29,15 @@ console.log(pets)
           <h2 className="header">Homepage</h2>
           <p>Placeholder text for nyaow.</p>
         </Route>
+        <Route path="/trainers">
+          <p>Trainer Page Placeholder</p>
+        </Route>
+        <Route path="/pets">
+          <p>Pet Page Placeholder</p>
+        </Route>
+        <Route path="/train-pet">
+          <p>Pet Training Page Placeholder</p>
+        </Route>
       </Switch>
     </div>
   );

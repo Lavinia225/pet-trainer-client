@@ -1,3 +1,5 @@
+import Trainer from './Trainer'
+
 function Trainers({trainers}){
     //Adjust backend to give pet IDs and names to trainers, not just IDs
 
@@ -9,12 +11,7 @@ function Trainers({trainers}){
                     <th>Personality: </th>
                     <th>Payrate: </th>
                 </tr>
-                <tr>
-                    <td>Name test</td>
-                    <td>Persona I hope</td>
-                    <td>Payrateee</td>
-                    <td>Lotsa pets</td>
-                </tr>
+                {trainers.map(trainer => <Trainer key={trainer.id} trainer={trainer} />)}
             </tbody>
         </table>
     )

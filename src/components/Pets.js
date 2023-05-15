@@ -1,4 +1,6 @@
-function Pets(){
+import Pet from './Pet'
+
+function Pets({pets}){
     //name, trainer, species, breed, age, gender, personality, working on
     return(
         <table>
@@ -13,6 +15,7 @@ function Pets(){
                     <th>Trainer: </th>
                     <th>Working On: </th>
                 </tr>
+                {pets.map(pet => <Pet key={pet.id} pet={Object.entries(pet)}/>)}
             </tbody>
         </table>
     )

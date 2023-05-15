@@ -2,6 +2,7 @@ import {Route, Switch} from "react-router-dom"
 import {useState, useEffect} from 'react'
 import NavBar from "./NavBar"
 import Trainers from "./Trainers"
+import Pets from './Pets'
 
 function App() {
   const [trainers, setTrainers] = useState([])
@@ -36,6 +37,7 @@ console.log(pets)
         </Route>
         <Route path="/pets">
           <p>Pet Page Placeholder</p>
+          <Pets pets={pets}/>
         </Route>
         <Route path="/train-pet">
           <p>Pet Training Page Placeholder</p>

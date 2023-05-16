@@ -20,9 +20,6 @@ function App() {
     .then(petArray => setPets(petArray))
   }, [])
 
-console.log(trainers) //Delete later as well as the next line
-console.log(pets)
-
   return (
     <div className="App">
       <NavBar />

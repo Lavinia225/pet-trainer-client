@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom'
 function Trainer({trainer}){
     return(
         <tr>
-            <NavLink to={`/trainers/update/${trainer.id}`}>✎</NavLink>
+            <td><NavLink to={`/trainers/update/${trainer.id}`}>✎</NavLink></td>
             <td>{trainer.name}</td>
             <td>{trainer.personality}</td>
             <td>{trainer.payrate}</td>

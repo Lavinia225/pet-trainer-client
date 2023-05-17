@@ -6,7 +6,6 @@ function Trainers({trainers}){
         <table>
             <tbody>
                 <tr>
-                    <th>Edit</th>
                     <th>Trainer: </th>
                     <th>Personality: </th>
                     <th>Payrate: </th>

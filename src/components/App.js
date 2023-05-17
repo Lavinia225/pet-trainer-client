@@ -11,14 +11,20 @@ function App() {
   useEffect(()=>{
     fetch("http://localhost:9292/trainers")
     .then(res => res.json())
-    .then(trainerArray => setTrainers(trainerArray))
+    .then(trainers => setTrainersAndPets(trainers))
   }, [])
 
-  useEffect(()=>{
+  function setTrainersAndPets(trainers){
+    setTrainers(trainers)
+    const pets = trainers.map(trainer => trainer.pets)
+    //setPets(pets)
+  }
+
+ /* useEffect(()=>{
     fetch("http://localhost:9292/pets")
     .then(res => res.json())
     .then(petArray => setPets(petArray))
-  }, [])
+  }, [])*/
 
   return (
     <div className="App">

@@ -7,7 +7,7 @@ function Trainer({trainer}){
             <td>{trainer.name}</td>
             <td>{trainer.personality}</td>
             <td>{trainer.payrate}</td>
-            <td>pets placeholder</td>
+            <td>{trainer.pets.length}</td>
         </tr>
     )
 }

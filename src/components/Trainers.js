@@ -1,8 +1,7 @@
 import Trainer from './Trainer'
 
 function Trainers({trainers}){
-    //Adjust backend to give pet IDs and names to trainers, not just IDs
-
+    
     return(
         <table>
             <tbody>
@@ -11,6 +10,7 @@ function Trainers({trainers}){
                     <th>Trainer: </th>
                     <th>Personality: </th>
                     <th>Payrate: </th>
+                    <th>Pets Training:</th>
                 </tr>
                 {trainers.map(trainer => <Trainer key={trainer.id} trainer={trainer} />)}
             </tbody>

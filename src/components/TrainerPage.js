@@ -24,8 +24,17 @@ function TrainerPage(){
         setEditing(!editing)
     }
 
-    function handleSubmit(){
-
+    function handleSubmit(updatedTrainer){
+        fetch(`http://localhost:9292/trainers/${params.id}`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(updatedTrainer)
+        })
+        .then(res => res.json)
+        .then(data => console.log(data))
     }
 
     return(

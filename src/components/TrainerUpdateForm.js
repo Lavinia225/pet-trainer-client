@@ -1,6 +1,6 @@
 import {useState} from 'react'
 //Figure out how to have this assign and unassign pets | name,personality, payrate at the fields here
-function  TrainerUpdateForm({trainer}){
+function  TrainerUpdateForm({cancelEdit, handleSubmit, trainer}){
     const [formData, setFormData] = useState({
         name: trainer.name,
         personality: trainer.personality,
@@ -14,11 +14,32 @@ function  TrainerUpdateForm({trainer}){
         })
     }
 
+    function handleSubmit(e){
+        e.preventDefault()
+        fetch(`http://localhost:9292/trainers/${trainer.id}`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))}
+
     return(
-        <form>
-            <label htmlFor="name">Name: </label>
-            <input type="text" value={formData.name} onChange={handleChange}></input>
-        </form>
+        <>
+            <h3 id='trainer-update-warning'>You can only reassign a pet's trainer from a pet's specific page.</h3>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="name">Name: </label>
+                <input type="text" name='name' value={formData.name} onChange={handleChange}></input>
+                <label htmlFor="personality">Personality: </label>
+                <input type="text" name='personality' value={formData.personality} onChange={handleChange}></input>
+                <label htmlFor="payrate">Payrate: </label>
+                <input type="number" name="payrate" value={formData.payrate} onChange={handleChange}></input>
+                <button type="submit">Submit</button>
+            </form>
+        </>
     )
 }
 

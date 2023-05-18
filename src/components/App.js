@@ -2,6 +2,7 @@ import {Route, Switch} from "react-router-dom"
 import {useState, useEffect} from 'react'
 import NavBar from "./NavBar"
 import Trainers from "./Trainers"
+import TrainerPage from './TrainerPage'
 import Pets from './Pets'
 
 function App() {
@@ -33,6 +34,9 @@ function App() {
         <Route exact path="/">
           <h2 className="header">Homepage</h2>
           <p>Placeholder text for nyaow.</p>
+        </Route>
+        <Route path="/trainers/:id">
+          <TrainerPage />
         </Route>
         <Route path="/trainers">
           <p>Trainer Page Placeholder</p>

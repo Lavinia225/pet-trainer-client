@@ -24,22 +24,9 @@ function TrainerPage(){
         setEditing(!editing)
     }
 
-    function handleSubmit(updatedTrainer){
-        fetch(`http://localhost:9292/trainers/${params.id}`, {
-            method: "PATCH",
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(updatedTrainer)
-        })
-        .then(res => res.json)
-        .then(data => console.log(data))
-    }
-
     return(
         <>
-            {editing ? <TrainerUpdateForm cancelEdit={handleEditing} handleSubmit={handleSubmit} trainer={trainer}/> :<>
+            {editing ? <TrainerUpdateForm cancelEdit={handleEditing} trainer={trainer}/> :<>
             <h3><span onClick={handleEditing}>✎</span> {trainer.name}</h3>
             <p>{trainer.personality} personality・${trainer.payrate} per hour</p>
             <p>Is training the following pets: </p>

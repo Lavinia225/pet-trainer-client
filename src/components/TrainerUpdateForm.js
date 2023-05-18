@@ -1,6 +1,6 @@
 import {useState} from 'react'
 //Figure out how to have this assign and unassign pets | name,personality, payrate at the fields here
-function  TrainerUpdateForm({cancelEdit, handleSubmit, trainer}){
+function  TrainerUpdateForm({cancelEdit, handleUpdate, trainer}){
     const [formData, setFormData] = useState({
         name: trainer.name,
         personality: trainer.personality,
@@ -25,11 +25,15 @@ function  TrainerUpdateForm({cancelEdit, handleSubmit, trainer}){
             body: JSON.stringify(formData)
         })
         .then(res => res.json())
-        .then(data => console.log(data))}
+        .then(data =>{
+            console.log(data)
+            cancelEdit()
+        })}
 
     return(
         <>
             <h3 id='trainer-update-warning'>You can only reassign a pet's trainer from a pet's specific page.</h3>
+            <button onClick={cancelEdit}>Cancel Editing</button>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Name: </label>
                 <input type="text" name='name' value={formData.name} onChange={handleChange}></input>

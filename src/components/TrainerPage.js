@@ -13,7 +13,10 @@ function TrainerPage(){
 
     return(
         <>
-        
+            <h3><span>✎</span> {trainer.name}</h3>
+            <p>{trainer.personality} personality・${trainer.payrate} per hour</p>
+            <p>Is training the following pets: </p>
+            {/*{trainer.map(pet => <Pet key={pet.id} pet={pet}/>)}*/}
         </>
     )
 }

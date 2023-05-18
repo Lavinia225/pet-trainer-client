@@ -6,13 +6,15 @@ function TrainerPage(){
     const params = useParams()
 
     useEffect(()=>{
-        fetch(`https://localhost:9292/trainers/${params.id}`)
+        fetch(`http://localhost:9292/trainers/${params.id}`)
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(t => setTrainer(t))
     }, [])
-    console.log("Params are", params)
+
     return(
-        <></>
+        <>
+        
+        </>
     )
 }
 

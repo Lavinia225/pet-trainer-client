@@ -1,11 +1,13 @@
 import {useState} from 'react'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
-function NewTrainerForm({trainer}){
+function NewTrainerForm({handlePost}){
     const [formData, setFormData] = useState({
         name: "",
         personality: "",
         payrate: 0
     })
+    const history = useHistory()
 
     function handleChange(e){
         setFormData({
@@ -16,7 +18,20 @@ function NewTrainerForm({trainer}){
 
     function handleSubmit(e){
         e.preventDefault()
-    }
+        fetch(`http://localhost:9292/trainers`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(res => res.json())
+        .then(newTrainer =>{
+            handlePost(newTrainer)
+            history.push('/trainers')
+        })}
+    
     //Need a button to cancel trainer creation
     return(
         <>

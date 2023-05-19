@@ -37,7 +37,11 @@ function App() {
         return trainer
       }
     })
+    setTrainers(newTrainers)
+  }
 
+  function handleTrainerCreation(newTrainer){
+    let newTrainers = [...trainers, newTrainer]
     setTrainers(newTrainers)
   }
 
@@ -50,7 +54,7 @@ function App() {
           <p>Placeholder text for nyaow.</p>
         </Route>
         <Route path="/trainers/create">
-          <NewTrainerForm />
+          <NewTrainerForm handlePost={handleTrainerCreation}/>
         </Route>
         <Route path="/trainers/:id">
           <TrainerPage handleUpdate={handleUpdate}/>

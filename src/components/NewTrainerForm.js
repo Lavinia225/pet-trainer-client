@@ -1,10 +1,10 @@
 import {useState} from 'react'
 
-function NewTrainerForm(){
+function NewTrainerForm({trainer}){
     const [formData, setFormData] = useState({
-        name: trainer.name,
-        personality: trainer.personality,
-        payrate: trainer.payrate
+        name: "",
+        personality: "",
+        payrate: 0
     })
 
     function handleChange(e){

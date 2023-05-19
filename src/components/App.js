@@ -4,6 +4,7 @@ import NavBar from "./NavBar"
 import Trainers from "./Trainers"
 import TrainerPage from './TrainerPage'
 import Pets from './Pets'
+import NewTrainerForm from "./NewTrainerForm"
 
 function App() {
   const [trainers, setTrainers] = useState([])
@@ -47,6 +48,9 @@ function App() {
         <Route exact path="/">
           <h2 className="header">Homepage</h2>
           <p>Placeholder text for nyaow.</p>
+        </Route>
+        <Route path="/trainers/create">
+          <NewTrainerForm />
         </Route>
         <Route path="/trainers/:id">
           <TrainerPage handleUpdate={handleUpdate}/>

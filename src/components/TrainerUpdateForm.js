@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-function  TrainerUpdateForm({cancelEdit, handleUpdate, trainer}){
+function  TrainerUpdateForm({cancelEdit, handleUpdate, handlePageUpdate, trainer}){
     const [formData, setFormData] = useState({
         name: trainer.name,
         personality: trainer.personality,
@@ -28,6 +28,7 @@ function  TrainerUpdateForm({cancelEdit, handleUpdate, trainer}){
         .then(updatedTrainer =>{
             cancelEdit()
             handleUpdate(updatedTrainer)
+            handlePageUpdate(updatedTrainer)
         })}
 
     return(

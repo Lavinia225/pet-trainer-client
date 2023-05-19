@@ -24,9 +24,13 @@ function TrainerPage({handleUpdate}){
         setEditing(!editing)
     }
 
+    function handlePageUpdate(updatedTrainer){
+        setTrainer(updatedTrainer)
+    }
+
     return(
         <>
-            {editing ? <TrainerUpdateForm cancelEdit={handleEditing} trainer={trainer} handleUpdate={handleUpdate}/> :<>
+            {editing ? <TrainerUpdateForm cancelEdit={handleEditing} trainer={trainer} handleUpdate={handleUpdate} handlePageUpdate={handlePageUpdate}/> :<>
             <h3><span onClick={handleEditing}>✎</span> {trainer.name}</h3>
             <p>{trainer.personality} personality・${trainer.payrate} per hour</p>
             <p>Is training the following pets: </p>

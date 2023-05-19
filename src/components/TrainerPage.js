@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import {useHistory, useParams} from 'react-router-dom'
 import TrainerUpdateForm from './TrainerUpdateForm'
 
-function TrainerPage(){
+function TrainerPage({handleUpdate}){
     const [trainer, setTrainer] = useState({})
     const [editing, setEditing] = useState(false)
     const params = useParams()
@@ -26,7 +26,7 @@ function TrainerPage(){
 
     return(
         <>
-            {editing ? <TrainerUpdateForm cancelEdit={handleEditing} trainer={trainer}/> :<>
+            {editing ? <TrainerUpdateForm cancelEdit={handleEditing} trainer={trainer} handleUpdate={handleUpdate}/> :<>
             <h3><span onClick={handleEditing}>✎</span> {trainer.name}</h3>
             <p>{trainer.personality} personality・${trainer.payrate} per hour</p>
             <p>Is training the following pets: </p>

@@ -27,6 +27,19 @@ function App() {
     .then(petArray => setPets(petArray))
   }, [])*/
 
+  function handleUpdate(updatedTrainer){
+    let newTrainers = trainers.map(trainer =>{
+      if(trainer.id === updatedTrainer.id){
+        return updatedTrainer
+      }
+      else{
+        return trainer
+      }
+    })
+
+    setTrainers(newTrainers)
+  }
+
   return (
     <div className="App">
       <NavBar />
@@ -36,7 +49,7 @@ function App() {
           <p>Placeholder text for nyaow.</p>
         </Route>
         <Route path="/trainers/:id">
-          <TrainerPage />
+          <TrainerPage handleUpdate={handleUpdate}/>
         </Route>
         <Route path="/trainers">
           <p>Trainer Page Placeholder</p>

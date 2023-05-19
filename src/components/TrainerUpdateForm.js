@@ -1,5 +1,5 @@
 import {useState} from 'react'
-//Figure out how to have this assign and unassign pets | name,personality, payrate at the fields here
+
 function  TrainerUpdateForm({cancelEdit, handleUpdate, trainer}){
     const [formData, setFormData] = useState({
         name: trainer.name,
@@ -25,9 +25,9 @@ function  TrainerUpdateForm({cancelEdit, handleUpdate, trainer}){
             body: JSON.stringify(formData)
         })
         .then(res => res.json())
-        .then(data =>{
-            console.log(data)
+        .then(updatedTrainer =>{
             cancelEdit()
+            handleUpdate(updatedTrainer)
         })}
 
     return(

@@ -39,7 +39,7 @@ function App() {
         return trainer
       }
     })
-    setTrainers(newTrainers)
+    setTrainersAndPets(newTrainers)
   }
 
   function handleTrainerCreation(newTrainer){

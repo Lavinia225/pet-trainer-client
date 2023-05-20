@@ -18,18 +18,20 @@ function App() {
 
   function setTrainersAndPets(trainers){
     setTrainers(trainers)
-    const pets = trainers.map(trainer => trainer.pets)
-    //setPets(pets)
+    const petCollection = []
+    for (let i = 0; i < trainers.length; i++){
+      trainers[i].pets.forEach(handlePet)
+
+      function handlePet(pet){
+        pet.trainerName = trainers[i].name
+        petCollection.push(pet)
+      }
+    }
+    setPets(petCollection)
   }
 
- /* useEffect(()=>{
-    fetch("http://localhost:9292/pets")
-    .then(res => res.json())
-    .then(petArray => setPets(petArray))
-  }, [])*/
-
   function handleUpdate(updatedTrainer){
-    let newTrainers = trainers.map(trainer =>{
+    const newTrainers = trainers.map(trainer =>{
       if(trainer.id === updatedTrainer.id){
         return updatedTrainer
       }
@@ -41,7 +43,7 @@ function App() {
   }
 
   function handleTrainerCreation(newTrainer){
-    let newTrainers = [...trainers, newTrainer]
+    const newTrainers = [...trainers, newTrainer]
     setTrainers(newTrainers)
   }
 
@@ -60,7 +62,7 @@ function App() {
           <TrainerPage handleUpdate={handleUpdate}/>
         </Route>
         <Route path="/trainers">
-          <p>Trainer Page Placeholder</p>
+          <p>Click a trainer to see the pets they are training, edit them, or fire/delete them.</p>
           <Trainers trainers={trainers}/>
         </Route>
         <Route path="/pets">

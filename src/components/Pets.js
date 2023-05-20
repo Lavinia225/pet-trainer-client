@@ -1,6 +1,6 @@
 import Pet from './Pet'
 
-function Pets({pets}){
+function Pets({pets, isTrainer = false}){
     //name, trainer, species, breed, age, gender, personality, working on
     return(
         <table>
@@ -13,7 +13,7 @@ function Pets({pets}){
                     <th>Gender: </th>
                     <th>Personality: </th>
                     <th>Working On: </th>
-                    <th>Trainer: </th>
+                    {isTrainer ? null : <th>Trainer: </th>}
                 </tr>
                 {pets.map(pet => <Pet key={pet.id} pet={Object.entries(pet)}/>)}
             </tbody>

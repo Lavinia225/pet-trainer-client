@@ -1,4 +1,4 @@
-import Pets from "./Pets"
+
 
 function Pet({pet}){
      //name, trainer, species, breed, age, gender, personality, working on

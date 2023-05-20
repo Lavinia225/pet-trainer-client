@@ -2,7 +2,6 @@ import {useEffect, useState} from 'react'
 import {useHistory, useParams} from 'react-router-dom'
 import TrainerUpdateForm from './TrainerUpdateForm'
 import Pets from './Pets'
-import Trainers from './Trainers'
 
 function TrainerPage({handleUpdate}){
     const [trainer, setTrainer] = useState({})
@@ -31,10 +30,10 @@ function TrainerPage({handleUpdate}){
     }
 
     function petChecker(){
-        if(trainer.pets != undefined && trainer.pets.length > 0){
+        if(trainer.pets !== undefined && trainer.pets.length > 0){
             return true
         }
-        else if(trainer.pets != undefined && trainer.pets.length == 0){
+        else if(trainer.pets !== undefined && trainer.pets.length === 0){
             return false
         }
         else{

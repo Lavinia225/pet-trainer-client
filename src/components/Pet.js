@@ -5,7 +5,7 @@ function Pet({pet}){
      function createTD(entry){
         if(entry[0] === "id" || entry[0] === "trainer_id") return null
         else{
-            return <td>{entry[1]}</td>
+            return <td key={entry[1]}>{entry[1]}</td>
         }
      }
 

@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
 
 function Pet({pet}){
-    
+
      function createTD(entry){
         if(entry[0] === "id" || entry[0] === "trainer_id" || entry[0] === "name") return null
         else{
@@ -11,7 +11,7 @@ function Pet({pet}){
 
     return(
         <tr>
-            <td><Link to={`/pets/${pet[0][1]}`}>{pet[1][1]}</Link></td>
+            <td><Link to={`/pets/${pet[0][1]}/edit`}>{pet[1][1]}</Link></td>
             {pet.map(createTD)}
         </tr>
     )

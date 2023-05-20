@@ -5,7 +5,7 @@ import Trainers from "./Trainers"
 import TrainerPage from './TrainerPage'
 import Pets from './Pets'
 import NewTrainerForm from "./NewTrainerForm"
-import PetPage from './PetPage'
+import PetUpdateForm from './PetUpdateForm'
 
 function App() {
   const [trainers, setTrainers] = useState([])
@@ -66,9 +66,9 @@ function App() {
           <p>Click a trainer to see the pets they are training, edit them, or fire/delete them.</p>
           <Trainers trainers={trainers}/>
         </Route>
-        <Route path="/pets/:id">
+        <Route path="/pets/:id/edit">
           <p>Pet personal page placeholder</p>
-          <PetPage />
+          <PetUpdateForm />
         </Route>
         <Route path="/pets">
           <p>Pet Page Placeholder</p>

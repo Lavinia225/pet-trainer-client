@@ -12,8 +12,8 @@ function Pets({pets}){
                     <th>Age: </th>
                     <th>Gender: </th>
                     <th>Personality: </th>
-                    <th>Trainer: </th>
                     <th>Working On: </th>
+                    <th>Trainer: </th>
                 </tr>
                 {pets.map(pet => <Pet key={pet.id} pet={Object.entries(pet)}/>)}
             </tbody>

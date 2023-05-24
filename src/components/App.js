@@ -31,7 +31,7 @@ function App() {
     setPets(petCollection)
   }
 
-  function handleUpdate(updatedTrainer){
+  function handleTrainerUpdate(updatedTrainer){
     const newTrainers = trainers.map(trainer =>{
       if(trainer.id === updatedTrainer.id){
         return updatedTrainer
@@ -48,6 +48,10 @@ function App() {
     setTrainers(newTrainers)
   }
 
+  function handlePetUpdate(updatedPet){
+    console.log(updatedPet)
+  }
+
   return (
     <div className="App">
       <NavBar />
@@ -60,7 +64,7 @@ function App() {
           <NewTrainerForm handlePost={handleTrainerCreation}/>
         </Route>
         <Route path="/trainers/:id">
-          <TrainerPage handleUpdate={handleUpdate}/>
+          <TrainerPage handleUpdate={handleTrainerUpdate}/>
         </Route>
         <Route path="/trainers">
           <p>Click a trainer to see the pets they are training, edit them, or fire/delete them.</p>
@@ -68,7 +72,7 @@ function App() {
         </Route>
         <Route path="/pets/:id/edit">
           <p>Pet personal page placeholder</p>
-          <PetUpdateForm />
+          <PetUpdateForm handleUpdate={handlePetUpdate}/>
         </Route>
         <Route path="/pets">
           <p>Pet Page Placeholder</p>

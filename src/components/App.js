@@ -72,7 +72,7 @@ function App() {
         </Route>
         <Route path="/pets/:id/edit">
           <p>Pet personal page placeholder</p>
-          <PetUpdateForm handleUpdate={handlePetUpdate}/>
+          <PetUpdateForm handleUpdate={handlePetUpdate} trainers={trainers}/>
         </Route>
         <Route path="/pets">
           <p>Pet Page Placeholder</p>

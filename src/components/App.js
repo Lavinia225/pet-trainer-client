@@ -80,7 +80,7 @@ function App() {
       <Switch>
         <Route exact path="/">
           <h2 className="header">Homepage</h2>
-          <p>Placeholder text for nyaow.</p>
+          <p>Welcome to Pet-Trainer! Head on over to your list of trainers or pets to see and/or modify them!</p>
         </Route>
         <Route path="/trainers/create">
           <NewTrainerForm handlePost={handleTrainerCreation}/>
@@ -96,11 +96,10 @@ function App() {
           <NewPetForm trainers={trainers} handlePost={handlePetCreation}/>
         </Route>
         <Route path="/pets/:id/edit">
-          <p>Pet personal page placeholder</p>
           <PetUpdateForm handleUpdate={handlePetUpdate} trainers={trainers}/>
         </Route>
         <Route path="/pets">
-          <p>Pet Page Placeholder</p>
+          <p>Click a Pet to edit them.</p>
           <Pets pets={pets} handleDelete={handlePetDelete}/>
         </Route>
       </Switch>

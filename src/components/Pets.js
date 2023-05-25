@@ -2,7 +2,7 @@ import Pet from './Pet'
 import {Link} from 'react-router-dom'
 
 function Pets({pets, isTrainer = false, handleDelete}){
-    //name, trainer, species, breed, age, gender, personality, working on
+
     return(
         <>
             {isTrainer ? null : <Link to="/pets/create">Create New Pet</Link>}

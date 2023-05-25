@@ -1,5 +1,4 @@
 import Trainer from './Trainer'
-import NewTrainerForm from './NewTrainerForm'
 import {Link} from 'react-router-dom'
 
 function Trainers({trainers}){

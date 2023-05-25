@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 
-function NewPetForm({trainers, handlePost}){//name, trainer, species, breed, age, gender, personality, working on
+function NewPetForm({trainers, handlePost}){
     const [formData, setFormData] = useState({
         name: "",
         species: "",

@@ -32,7 +32,6 @@ function NewTrainerForm({handlePost}){
             history.push('/trainers')
         })}
     
-    //Need a button to cancel trainer creation
     return(
         <>
             <form onSubmit={handleSubmit}>

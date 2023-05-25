@@ -6,7 +6,6 @@ function NavBar(){
             <NavLink to="/">Home</NavLink>
             <NavLink to="/pets">Pets</NavLink>
             <NavLink to="/trainers">Trainers</NavLink>
-            <NavLink to="/train-pet">Train Pets</NavLink>
         </nav>
     )
 }

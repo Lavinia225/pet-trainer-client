@@ -21,7 +21,7 @@ function Pets({pets, isTrainer = false, handleDelete}){
                             <th>Delete: </th>
                         </>}
                     </tr>
-                    {pets.map(pet => <Pet key={pet.id} pet={Object.entries(pet)} handleDelete={handleDelete} />)}
+                    {pets.map(pet => <Pet key={pet.id} pet={Object.entries(pet)} handleDelete={handleDelete} isTrainer={isTrainer}/>)}
                 </tbody>
             </table>
         </>

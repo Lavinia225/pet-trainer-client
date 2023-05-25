@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
 
-function Pet({pet, handleDelete}){
+function Pet({pet, handleDelete, isTrainer = false}){
 
      function createTD(entry){
         if(entry[0] === "id" || entry[0] === "trainer_id" || entry[0] === "name") return null
@@ -22,7 +22,7 @@ function Pet({pet, handleDelete}){
         <tr>
             <td><Link to={`/pets/${pet[0][1]}/edit`}>{pet[1][1]}</Link></td>
             {pet.map(createTD)}
-            <td onClick={progressDelete}>🗑</td>
+            {isTrainer ? null : <td onClick={progressDelete}>🗑</td>}
         </tr>
     )
 }

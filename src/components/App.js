@@ -86,7 +86,7 @@ function App() {
           <NewTrainerForm handlePost={handleTrainerCreation}/>
         </Route>
         <Route path="/trainers/:id">
-          <TrainerPage handleUpdate={handleTrainerUpdate} handleDelete={handleTrainerDelete} handlePetDelete={handlePetDelete}/>
+          <TrainerPage handleUpdate={handleTrainerUpdate} handleDelete={handleTrainerDelete}/>
         </Route>
         <Route path="/trainers">
           <p>Click a trainer to see the pets they are training, edit them, or fire/delete them.</p>

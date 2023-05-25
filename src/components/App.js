@@ -103,9 +103,6 @@ function App() {
           <p>Pet Page Placeholder</p>
           <Pets pets={pets} handleDelete={handlePetDelete}/>
         </Route>
-        <Route path="/train-pet">
-          <p>Pet Training Page Placeholder</p>
-        </Route>
       </Switch>
     </div>
   );

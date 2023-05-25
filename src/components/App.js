@@ -66,6 +66,10 @@ function App() {
     setPets([...pets, newPet])
   }
 
+  function handleTrainerDelete(id){
+    setTrainers(trainers.filter(trainer => trainer.id !== id))
+  }
+
   return (
     <div className="App">
       <NavBar />
@@ -78,7 +82,7 @@ function App() {
           <NewTrainerForm handlePost={handleTrainerCreation}/>
         </Route>
         <Route path="/trainers/:id">
-          <TrainerPage handleUpdate={handleTrainerUpdate}/>
+          <TrainerPage handleUpdate={handleTrainerUpdate} handleDelete={handleTrainerDelete}/>
         </Route>
         <Route path="/trainers">
           <p>Click a trainer to see the pets they are training, edit them, or fire/delete them.</p>

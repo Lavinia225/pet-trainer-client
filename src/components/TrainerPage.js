@@ -41,7 +41,7 @@ function TrainerPage({handleUpdate, handleDelete}){
         }
     }
 
-    function handleDelete(){
+    function progressDelete(){
         if(petChecker()){
             window.alert("You must reassign all pets belonging to this trainer before firing them.")
         }
@@ -50,7 +50,10 @@ function TrainerPage({handleUpdate, handleDelete}){
                 fetch(`http://localhost:9292/trainers/${trainer.id}`, {
                     method: "DELETE"
                 })
-                .then(history.push('/trainers'))
+                .then(()=>{
+                    handleDelete(trainer.id)
+                    history.push('/trainers')
+                })
             }
         }
     }
@@ -59,7 +62,7 @@ function TrainerPage({handleUpdate, handleDelete}){
         <>
             {editing ? <TrainerUpdateForm cancelEdit={handleEditing} trainer={trainer} handleUpdate={handleUpdate} handlePageUpdate={handlePageUpdate}/> :<>
             <h3>
-                <span onClick={handleEditing}>✎</span> {trainer.name} <span onClick={handleDelete}>🗑</span>
+                <span onClick={handleEditing}>✎</span> {trainer.name} <span onClick={progressDelete}>🗑</span>
             </h3>
             <hr />
             <p>{trainer.personality} personality・${trainer.payrate} per hour</p>

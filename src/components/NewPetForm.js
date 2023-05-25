@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function NewPetForm(){//name, trainer, species, breed, age, gender, personality, working on
+function NewPetForm({trainers}){//name, trainer, species, breed, age, gender, personality, working on
     const [formData, setFormData] = useState({
         name: "",
         species: "",
@@ -27,10 +27,35 @@ function NewPetForm(){//name, trainer, species, breed, age, gender, personality,
         })
     }
 
+    function handleSelectChange(e){
+        setFormData({
+            ...formData,
+            trainer_id: parseInt(e.target.value.match(/\d/g).join(""))
+        })
+    }
+
+    function handleSubmit(e){
+        e.preventDefault()
+        fetch(`http://localhost:9292/pets`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(r => r.json())
+        .then(newPet => console.log(newPet))
+    }
+
     return(
     <>
-        <form>
+        <form onSubmit={handleSubmit}>
             {Object.keys(formData).map(createFormInputs)}
+            <select onChange={handleSelectChange}>
+                {trainers.map(trainer => <option key={trainer.id}>{trainer.name}・ID: {trainer.id}</option>)}
+            </select>
+            <button type='submit'>Submit</button>
         </form>
     </>)
 }

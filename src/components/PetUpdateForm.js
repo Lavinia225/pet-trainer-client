@@ -49,7 +49,7 @@ function PetUpdateForm({handleUpdate, trainers}){
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
-                "Accepts": "application/jsobn"
+                "Accept": "application/json"
             },
             body: JSON.stringify(formData)
         })

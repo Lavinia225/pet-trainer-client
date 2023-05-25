@@ -61,6 +61,11 @@ function App() {
     }))
   }
 
+  function handlePetCreation(newPet){
+    newPet.trainerName = trainers.find(trainer => trainer.id === newPet.trainer_id).name
+    setPets([...pets, newPet])
+  }
+
   return (
     <div className="App">
       <NavBar />
@@ -80,7 +85,7 @@ function App() {
           <Trainers trainers={trainers}/>
         </Route>
         <Route path="/pets/create">
-          <NewPetForm trainers={trainers}/>
+          <NewPetForm trainers={trainers} handlePost={handlePetCreation}/>
         </Route>
         <Route path="/pets/:id/edit">
           <p>Pet personal page placeholder</p>

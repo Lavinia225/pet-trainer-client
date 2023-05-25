@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 
-function NewPetForm({trainers}){//name, trainer, species, breed, age, gender, personality, working on
+function NewPetForm({trainers, handlePost}){//name, trainer, species, breed, age, gender, personality, working on
     const [formData, setFormData] = useState({
         name: "",
         species: "",
@@ -11,6 +12,7 @@ function NewPetForm({trainers}){//name, trainer, species, breed, age, gender, pe
         working_on: "",
         trainer_id: 0
     })
+    const history = useHistory()
 
     function createFormInputs(key){
         if(key === "trainer_id") return null
@@ -45,7 +47,10 @@ function NewPetForm({trainers}){//name, trainer, species, breed, age, gender, pe
             body: JSON.stringify(formData)
         })
         .then(r => r.json())
-        .then(newPet => console.log(newPet))
+        .then(newPet =>{
+            handlePost(newPet)
+            history.push('/pets')
+        })
     }
 
     return(

@@ -49,7 +49,15 @@ function App() {
   }
 
   function handlePetUpdate(updatedPet){
-    console.log(updatedPet)
+    updatedPet.trainerName = trainers.find(trainer => trainer.id === updatedPet.trainer_id).name
+    setPets(pets.map(pet =>{
+      if(pet.id === updatedPet.id){
+        return updatedPet
+      }
+      else{
+        return pet
+      }
+    }))
   }
 
   return (

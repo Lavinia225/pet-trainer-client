@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useParams } from "react-router-dom"
 
 function PetUpdateForm({handleUpdate, trainers}){
@@ -36,10 +36,10 @@ function PetUpdateForm({handleUpdate, trainers}){
 
     function createFormInputs(key){
         if(key === "id" || key === "trainer_id") return null
-        return (<>
+        return (<React.Fragment key={key}>
         <label htmlFor={key}>{key[0].toUpperCase() + key.slice(1)}: </label>
         <input type="text" name={key} value={formData[`${key}`]} onChange={handleChange}></input>
-        </>)
+        </React.Fragment>)
     }
 
     function handleSubmit(e){
@@ -53,7 +53,7 @@ function PetUpdateForm({handleUpdate, trainers}){
             body: JSON.stringify(formData)
         })
         .then(r => r.json())
-        .then(data => console.log("returned data", data))
+        .then(handleUpdate)
     }
 
     return(
@@ -62,7 +62,7 @@ function PetUpdateForm({handleUpdate, trainers}){
         <form>
         {Object.keys(formData).map(createFormInputs)}
         <select onChange={handleSelectChange}>
-            {trainers.map(trainer => <option>{trainer.name}・ID: {trainer.id}</option>)}
+            {trainers.map(trainer => <option key={trainer.id}>{trainer.name}・ID: {trainer.id}</option>)}
         </select>
         <button type="submit" onClick={handleSubmit}>Submit</button>
         </form>

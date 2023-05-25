@@ -5,7 +5,7 @@ function Pets({pets, isTrainer = false}){
     //name, trainer, species, breed, age, gender, personality, working on
     return(
         <>
-            <Link to="/pets/create">Create New Pet</Link>
+            {isTrainer ? null : <Link to="/pets/create">Create New Pet</Link>}
             <table>
                 <tbody>
                     <tr>

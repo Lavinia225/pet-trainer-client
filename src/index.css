@@ -11,7 +11,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+* {
+  text-align: center;
+}
 
 #trainer-update-warning{
   color: red;
+}
+
+body {
+  background-color: #E6E6FA;
+}
+
+nav a {
+  margin-right:10px;
+  font-size: 20px;
+}
+
+table, th, td {
+  border: 1px solid;
+}
+
+table {
+  margin: auto;
+  max-width: 50%;
+}
+
+.divider {
+  height: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 150px;
 }

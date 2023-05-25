@@ -6,6 +6,7 @@ function Trainers({trainers}){
     return(
         <>
             <Link to="/trainers/create">Create New Trainer</Link>
+            <div className="divider"></div>
             <table>
                 <tbody>
                     <tr>

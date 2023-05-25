@@ -6,6 +6,7 @@ function Pets({pets, isTrainer = false, handleDelete}){
     return(
         <>
             {isTrainer ? null : <Link to="/pets/create">Create New Pet</Link>}
+            <div className="divider"></div>
             <table>
                 <tbody>
                     <tr>

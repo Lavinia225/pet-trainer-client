@@ -79,8 +79,8 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path="/">
-          <h2 className="header">Homepage</h2>
-          <p>Welcome to Pet-Trainer! Head on over to your list of trainers or pets to see and/or modify them!</p>
+            <h2 className="header">Homepage</h2>
+            <p>Welcome to Pet-Trainer! Head on over to your list of trainers or pets to see and/or modify them!</p>
         </Route>
         <Route path="/trainers/create">
           <NewTrainerForm handlePost={handleTrainerCreation}/>

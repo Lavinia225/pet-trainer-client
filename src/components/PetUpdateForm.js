@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 
 function PetUpdateForm({handleUpdate, trainers}){
     const [formData, setFormData] = useState({
@@ -13,6 +13,7 @@ function PetUpdateForm({handleUpdate, trainers}){
         trainer_id: 0
     })
     const params = useParams()
+    const history = useHistory()
 
     useEffect(()=>{
         fetch(`http://localhost:9292/pets/${params.id}`)
@@ -54,11 +55,16 @@ function PetUpdateForm({handleUpdate, trainers}){
         })
         .then(r => r.json())
         .then(handleUpdate)
+        .then(history.push('/pets'))
+    }
+
+    function cancelEdit(){
+        history.push('/pets')
     }
 
     return(
     <>
-        <button>Cancel Editing</button>{/*Currently does nothing */}
+        <button onClick={cancelEdit}>Cancel Editing</button>
         <form>
         {Object.keys(formData).map(createFormInputs)}
         <select onChange={handleSelectChange}>

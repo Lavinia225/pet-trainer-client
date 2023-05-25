@@ -16,7 +16,10 @@ function Pets({pets, isTrainer = false}){
                         <th>Gender: </th>
                         <th>Personality: </th>
                         <th>Working On: </th>
-                        {isTrainer ? null : <th>Trainer: </th>}
+                        {isTrainer ? null : <>
+                            <th>Trainer: </th>
+                            <th>Delete: </th>
+                        </>}
                     </tr>
                     {pets.map(pet => <Pet key={pet.id} pet={Object.entries(pet)}/>)}
                 </tbody>

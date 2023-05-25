@@ -41,7 +41,21 @@ function PetUpdateForm({handleUpdate, trainers}){
         <input type="text" name={key} value={formData[`${key}`]} onChange={handleChange}></input>
         </>)
     }
-    
+
+    function handleSubmit(e){
+        e.preventDefault()
+        fetch(`http://localhost:9292/pets/${formData.id}}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Accepts": "application/jsobn"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(r => r.json())
+        .then(data => console.log("returned data", data))
+    }
+
     return(
     <>
         <button>Cancel Editing</button>{/*Currently does nothing */}
@@ -50,6 +64,7 @@ function PetUpdateForm({handleUpdate, trainers}){
         <select onChange={handleSelectChange}>
             {trainers.map(trainer => <option>{trainer.name}・ID: {trainer.id}</option>)}
         </select>
+        <button type="submit" onClick={handleSubmit}>Submit</button>
         </form>
     </>)
 }

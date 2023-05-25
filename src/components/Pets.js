@@ -1,7 +1,7 @@
 import Pet from './Pet'
 import {Link} from 'react-router-dom'
 
-function Pets({pets, isTrainer = false}){
+function Pets({pets, isTrainer = false, handleDelete}){
     //name, trainer, species, breed, age, gender, personality, working on
     return(
         <>
@@ -21,7 +21,7 @@ function Pets({pets, isTrainer = false}){
                             <th>Delete: </th>
                         </>}
                     </tr>
-                    {pets.map(pet => <Pet key={pet.id} pet={Object.entries(pet)}/>)}
+                    {pets.map(pet => <Pet key={pet.id} pet={Object.entries(pet)} handleDelete={handleDelete} />)}
                 </tbody>
             </table>
         </>

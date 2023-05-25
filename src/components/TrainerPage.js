@@ -3,7 +3,7 @@ import {useHistory, useParams} from 'react-router-dom'
 import TrainerUpdateForm from './TrainerUpdateForm'
 import Pets from './Pets'
 
-function TrainerPage({handleUpdate, handleDelete}){
+function TrainerPage({handleUpdate, handleDelete, handlePetDelete}){
     const [trainer, setTrainer] = useState({})
     const [editing, setEditing] = useState(false)
     const params = useParams()
@@ -67,7 +67,7 @@ function TrainerPage({handleUpdate, handleDelete}){
             <hr />
             <p>{trainer.personality} personality・${trainer.payrate} per hour</p>
             <p>Is training the following pets: </p>
-            {petChecker() ? <Pets pets={trainer.pets} isTrainer={true}/> : <p>No pets</p>}
+            {petChecker() ? <Pets pets={trainer.pets} isTrainer={true} handleDelete={handlePetDelete}/> : <p>No pets</p>}
             </>}
         </>
     )

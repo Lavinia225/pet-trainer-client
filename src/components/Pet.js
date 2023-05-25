@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
 
-function Pet({pet}){
+function Pet({pet, handleDelete}){
 
      function createTD(entry){
         if(entry[0] === "id" || entry[0] === "trainer_id" || entry[0] === "name") return null
@@ -11,8 +11,10 @@ function Pet({pet}){
 
      function progressDelete(){
         if(window.confirm("Are you sure you want to delete this entity?")){
-            //fetch(`http://localhost:9292/pets/${p[0]}`)
-            console.log(pet)
+            fetch(`http://localhost:9292/pets/${pet[0][1]}`, {
+                method: "DELETE"
+            })
+            .then(()=>handleDelete(pet[0][1]))
         }
      }
 

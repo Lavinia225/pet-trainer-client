@@ -70,6 +70,10 @@ function App() {
     setTrainers(trainers.filter(trainer => trainer.id !== id))
   }
 
+  function handlePetDelete(id){
+    setPets(pets.filter(pet => pet.id !== id))
+  }
+
   return (
     <div className="App">
       <NavBar />
@@ -82,7 +86,7 @@ function App() {
           <NewTrainerForm handlePost={handleTrainerCreation}/>
         </Route>
         <Route path="/trainers/:id">
-          <TrainerPage handleUpdate={handleTrainerUpdate} handleDelete={handleTrainerDelete}/>
+          <TrainerPage handleUpdate={handleTrainerUpdate} handleDelete={handleTrainerDelete} handlePetDelete={handlePetDelete}/>
         </Route>
         <Route path="/trainers">
           <p>Click a trainer to see the pets they are training, edit them, or fire/delete them.</p>
@@ -97,7 +101,7 @@ function App() {
         </Route>
         <Route path="/pets">
           <p>Pet Page Placeholder</p>
-          <Pets pets={pets}/>
+          <Pets pets={pets} handleDelete={handlePetDelete}/>
         </Route>
         <Route path="/train-pet">
           <p>Pet Training Page Placeholder</p>

@@ -57,6 +57,7 @@ function NewPetForm({trainers, handlePost}){
     <>
         <form onSubmit={handleSubmit}>
             {Object.keys(formData).map(createFormInputs)}
+            <label htmlFor="trainer">Trainer: </label>
             <select onChange={handleSelectChange}>
                 {trainers.map(trainer => <option key={trainer.id}>{trainer.name}・ID: {trainer.id}</option>)}
             </select>

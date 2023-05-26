@@ -64,9 +64,10 @@ function PetUpdateForm({handleUpdate, trainers}){
 
     return(
     <>
-        <button onClick={cancelEdit}>Cancel Editing</button>
+        <button onClick={cancelEdit} className="edit-button">Cancel Editing</button>
         <form>
         {Object.keys(formData).map(createFormInputs)}
+        <label htmlFor="trainer">Trainer: </label>
         <select onChange={handleSelectChange}>
             {trainers.map(trainer => <option key={trainer.id}>{trainer.name}・ID: {trainer.id}</option>)}
         </select>

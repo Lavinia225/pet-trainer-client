@@ -34,6 +34,7 @@ function NewTrainerForm({handlePost}){
     
     return(
         <>
+            <h3>Trainer Creation!</h3>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Name: </label>
                 <input type="text" name='name' value={formData.name} onChange={handleChange}></input>

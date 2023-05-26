@@ -33,6 +33,7 @@ function  TrainerUpdateForm({cancelEdit, handleUpdate, handlePageUpdate, trainer
 
     return(
         <>
+            <h3>Trainer Editing!</h3>
             <h3 id='trainer-update-warning'>You can only reassign a pet's trainer from a pet's specific edit form.</h3>
             <button onClick={cancelEdit} className="edit-button">Cancel Editing</button>
             <form onSubmit={handleSubmit}>

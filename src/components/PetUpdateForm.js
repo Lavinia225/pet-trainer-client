@@ -64,6 +64,7 @@ function PetUpdateForm({handleUpdate, trainers}){
 
     return(
     <>
+        <h3>Pet Editing!</h3>
         <button onClick={cancelEdit} className="edit-button">Cancel Editing</button>
         <form>
         {Object.keys(formData).map(createFormInputs)}

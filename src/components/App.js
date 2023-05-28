@@ -52,7 +52,6 @@ function App() {
   function handlePetUpdate(updatedPet, originalTrainerId){
     const trainerToUpdate = trainers.find(trainer => trainer.id === updatedPet.trainer_id)
     updatedPet.trainerName = trainerToUpdate.name
-    const trainerChange = updatedPet.trainer_id !== originalTrainerId
 
     setPets(pets.map(pet =>{
       if(pet.id === updatedPet.id){
@@ -66,7 +65,7 @@ function App() {
     setTrainers(trainers.map(updatedTrainers))
 
     function updatedTrainers(trainer){
-      if(trainerChange){
+      if(updatedPet.trainer_id !== originalTrainerId){
         if (trainer.id === originalTrainerId){
           trainer.pets = trainer.pets.filter(pet => pet.id !== updatedPet.id)
           return trainer

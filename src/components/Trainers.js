@@ -2,7 +2,7 @@ import Trainer from './Trainer'
 import {Link} from 'react-router-dom'
 
 function Trainers({trainers}){
-    
+
     return(
         <>
             <Link to="/trainers/create">Create New Trainer</Link>

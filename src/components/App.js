@@ -49,8 +49,11 @@ function App() {
     setTrainers(newTrainers)
   }
 
-  function handlePetUpdate(updatedPet){
-    updatedPet.trainerName = trainers.find(trainer => trainer.id === updatedPet.trainer_id).name
+  function handlePetUpdate(updatedPet, originalTrainerId){
+    const trainerToUpdate = trainers.find(trainer => trainer.id === updatedPet.trainer_id)
+    updatedPet.trainerName = trainerToUpdate.name
+    const trainerChange = updatedPet.trainer_id !== originalTrainerId
+
     setPets(pets.map(pet =>{
       if(pet.id === updatedPet.id){
         return updatedPet
@@ -59,10 +62,26 @@ function App() {
         return pet
       }
     }))
+
+    setTrainers(trainers.map(updatedTrainers))
+
+    function updatedTrainers(trainer){
+      if(trainerChange){
+        if (trainer.id === originalTrainerId){
+          trainer.pets = trainer.pets.filter(pet => pet.id !== updatedPet.id)
+          return trainer
+        }
+      }
+
+      if(trainer.id === updatedPet.trainer_id){
+        trainer.pets = [...trainer.pets, updatedPet]
+      }
+      return trainer
+    }
   }
 
   function handlePetCreation(newPet){
-    let trainerToUpdate = trainers.find(trainer => trainer.id === newPet.trainer_id)
+    const trainerToUpdate = trainers.find(trainer => trainer.id === newPet.trainer_id)
     newPet.trainerName = trainerToUpdate.name
     trainerToUpdate.pets.push(newPet)
 
@@ -85,7 +104,7 @@ function App() {
     setPets(pets.filter(pet => pet.id !== deletedPet.id))
     setTrainers(trainers.map(trainer =>{
       if (trainer.id === deletedPet.trainer_id){
-        trainer.pets =  trainer.pets.filter(pet => pet.id !== deletedPet.id)
+        trainer.pets = trainer.pets.filter(pet => pet.id !== deletedPet.id)
         return trainer
       }
       else{

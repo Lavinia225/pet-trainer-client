@@ -12,6 +12,7 @@ function PetUpdateForm({handleUpdate, trainers}){
         working_on: "",
         trainer_id: 0
     })
+    const [originalTrainerId, setOriginalTrainerId] = useState(0)
     const params = useParams()
     const history = useHistory()
 
@@ -20,6 +21,7 @@ function PetUpdateForm({handleUpdate, trainers}){
         .then(res => res.json())
         .then(pet =>{
             setFormData(pet)
+            setOriginalTrainerId(pet.trainer_id)
             document.getElementById(`option${pet.trainer_id}`).selected = true
         })
     },[])
@@ -57,7 +59,7 @@ function PetUpdateForm({handleUpdate, trainers}){
             body: JSON.stringify(formData)
         })
         .then(r => r.json())
-        .then(handleUpdate)
+        .then(pet => handleUpdate(pet, originalTrainerId))
         .then(history.goBack())
     }
 

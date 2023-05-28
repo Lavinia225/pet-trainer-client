@@ -4,10 +4,12 @@ function Pet({pet, handleDelete, isTrainer = false}){
 
      function createTD(entry){
         if(entry[0] === "id" || entry[0] === "trainer_id" || entry[0] === "name") return null
+        if(isTrainer && entry[0] === "trainerName") return null
         else{
             return <td key={entry[1] + Math.random(0, 999)}>{entry[1]}</td>
         }
      }
+     console.log("isTrainer is", isTrainer)
 
      function progressDelete(){
         if(window.confirm("Are you sure you want to delete this entity?")){

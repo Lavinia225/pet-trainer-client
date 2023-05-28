@@ -58,7 +58,7 @@ function PetUpdateForm({handleUpdate, trainers}){
         })
         .then(r => r.json())
         .then(handleUpdate)
-        .then(history.push('/pets'))
+        .then(history.goBack())
     }
 
     function cancelEdit(){

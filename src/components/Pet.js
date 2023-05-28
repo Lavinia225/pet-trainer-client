@@ -15,7 +15,8 @@ function Pet({pet, handleDelete, isTrainer = false}){
             fetch(`http://localhost:9292/pets/${pet[0][1]}`, {
                 method: "DELETE"
             })
-            .then(()=>handleDelete(pet[0][1]))
+            .then(r => r.json())
+            .then(deletedPet =>handleDelete(deletedPet))
         }
      }
 

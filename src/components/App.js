@@ -62,11 +62,10 @@ function App() {
   }
 
   function handlePetCreation(newPet){
-    debugger
     let trainerToUpdate = trainers.find(trainer => trainer.id === newPet.trainer_id)
     newPet.trainerName = trainerToUpdate.name
     trainerToUpdate.pets.push(newPet)
-    debugger
+
     setTrainers(trainers.map(trainer =>{
       if (trainer.id === trainerToUpdate.id){
         return trainerToUpdate
@@ -82,8 +81,17 @@ function App() {
     setTrainers(trainers.filter(trainer => trainer.id !== id))
   }
 
-  function handlePetDelete(id){
-    setPets(pets.filter(pet => pet.id !== id))
+  function handlePetDelete(deletedPet){
+    setPets(pets.filter(pet => pet.id !== deletedPet.id))
+    setTrainers(trainers.map(trainer =>{
+      if (trainer.id === deletedPet.trainer_id){
+        trainer.pets =  trainer.pets.filter(pet => pet.id !== deletedPet.id)
+        return trainer
+      }
+      else{
+        return trainer
+      }
+    }))
   }
 
   return (

@@ -62,6 +62,7 @@ function App() {
   }
 
   function handlePetCreation(newPet){
+    debugger
     newPet.trainerName = trainers.find(trainer => trainer.id === newPet.trainer_id).name
     setPets([...pets, newPet])
   }

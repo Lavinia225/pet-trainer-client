@@ -9,8 +9,7 @@ function NewPetForm({trainers, handlePost}){
         age: 0,
         gender: "",
         personality: "",
-        working_on: "",
-        trainer_id: 0
+        working_on: ""
     })
     const history = useHistory()
 
@@ -38,6 +37,7 @@ function NewPetForm({trainers, handlePost}){
 
     function handleSubmit(e){
         e.preventDefault()
+        console.log(formData)
         fetch(`http://localhost:9292/pets`, {
             method: "POST",
             headers: {
@@ -53,6 +53,11 @@ function NewPetForm({trainers, handlePost}){
         })
     }
 
+    if (trainers.length > 0 && !formData.trainer_id){
+        debugger
+        setFormData({...formData, trainer_id: `${trainers[0].id}`})
+    }
+
     return(
     <>
         <h3>Pet Creation!</h3>
@@ -60,7 +65,7 @@ function NewPetForm({trainers, handlePost}){
             {Object.keys(formData).map(createFormInputs)}
             <label htmlFor="trainer">Trainer: </label>
             <select onChange={handleSelectChange}>
-                {trainers.map(trainer => <option key={trainer.id}>{trainer.name}・ID: {trainer.id}</option>)}
+                {trainers.map((trainer, index) => <option key={trainer.id} id={`option-${index}`}>{trainer.name}・ID: {trainer.id}</option>)}
             </select>
             <button type='submit'>Submit</button>
         </form>

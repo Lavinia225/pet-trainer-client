@@ -18,7 +18,10 @@ function PetUpdateForm({handleUpdate, trainers}){
     useEffect(()=>{
         fetch(`http://localhost:9292/pets/${params.id}`)
         .then(res => res.json())
-        .then(pet => setFormData(pet))
+        .then(pet =>{
+            setFormData(pet)
+            document.getElementById(`option${pet.trainer_id}`).selected = true
+        })
     },[])
 
     function handleChange(e){
@@ -70,7 +73,7 @@ function PetUpdateForm({handleUpdate, trainers}){
         {Object.keys(formData).map(createFormInputs)}
         <label htmlFor="trainer">Trainer: </label>
         <select onChange={handleSelectChange}>
-            {trainers.map(trainer => <option key={trainer.id}>{trainer.name}・ID: {trainer.id}</option>)}
+            {trainers.map(trainer => <option key={trainer.id} id={`option${trainer.id}`}>{trainer.name}・ID: {trainer.id}</option>)}
         </select>
         <button type="submit" onClick={handleSubmit}>Submit</button>
         </form>

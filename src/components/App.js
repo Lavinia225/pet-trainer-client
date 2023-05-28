@@ -63,7 +63,18 @@ function App() {
 
   function handlePetCreation(newPet){
     debugger
-    newPet.trainerName = trainers.find(trainer => trainer.id === newPet.trainer_id).name
+    let trainerToUpdate = trainers.find(trainer => trainer.id === newPet.trainer_id)
+    newPet.trainerName = trainerToUpdate.name
+    trainerToUpdate.pets.push(newPet)
+    debugger
+    setTrainers(trainers.map(trainer =>{
+      if (trainer.id === trainerToUpdate.id){
+        return trainerToUpdate
+      }
+      else{
+        return trainer
+      }
+    }))
     setPets([...pets, newPet])
   }
 
